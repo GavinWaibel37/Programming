@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\mc_gwaibel27\\Documents\\GitHub\\Programming\\pac_man_c#\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0E2F55CF-F62C-9A19-C529-BF333F6C44EE}|pac_man_c#\\pac_man_c#.csproj|c:\\users\\mc_gwaibel27\\documents\\github\\programming\\pac_man_c#\\pac_man_c#\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0E2F55CF-F62C-9A19-C529-BF333F6C44EE}|pac_man_c#\\pac_man_c#.csproj|solutionrelative:pac_man_c#\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E2F55CF-F62C-9A19-C529-BF333F6C44EE}|pac_man_c#\\pac_man_c#.csproj|c:\\users\\mc_gwaibel27\\documents\\github\\programming\\pac_man_c#\\pac_man_c#\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E2F55CF-F62C-9A19-C529-BF333F6C44EE}|pac_man_c#\\pac_man_c#.csproj|solutionrelative:pac_man_c#\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\mc_gwaibel27\\Documents\\GitHub\\Programming\\pac_man_c#\\pac_man_c#\\Form1.cs",
+              "RelativeDocumentMoniker": "pac_man_c#\\Form1.cs",
+              "ToolTip": "C:\\Users\\mc_gwaibel27\\Documents\\GitHub\\Programming\\pac_man_c#\\pac_man_c#\\Form1.cs*",
+              "RelativeToolTip": "pac_man_c#\\Form1.cs*",
+              "ViewState": "AgIAAAcAAAAAAAAAAADwvx8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-11T16:16:33.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\mc_gwaibel27\\Documents\\GitHub\\Programming\\pac_man_c#\\pac_man_c#\\Form1.cs",
+              "RelativeDocumentMoniker": "pac_man_c#\\Form1.cs",
+              "ToolTip": "C:\\Users\\mc_gwaibel27\\Documents\\GitHub\\Programming\\pac_man_c#\\pac_man_c#\\Form1.cs [Design]*",
+              "RelativeToolTip": "pac_man_c#\\Form1.cs [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-10T16:16:37.981Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

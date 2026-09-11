@@ -1,0 +1,17 @@
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\bin\Debug\net10.0-windows\pac_man_c#.exe
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\bin\Debug\net10.0-windows\pac_man_c#.deps.json
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\bin\Debug\net10.0-windows\pac_man_c#.runtimeconfig.json
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\bin\Debug\net10.0-windows\pac_man_c#.dll
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\bin\Debug\net10.0-windows\pac_man_c#.pdb
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\obj\Debug\net10.0-windows\pac_man_c_.Form1.resources
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\obj\Debug\net10.0-windows\pac_man_c_.Properties.Resources.resources
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\obj\Debug\net10.0-windows\pac_man_c#.csproj.GenerateResource.cache
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\obj\Debug\net10.0-windows\pac_man_c#.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\obj\Debug\net10.0-windows\pac_man_c#.AssemblyInfoInputs.cache
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\obj\Debug\net10.0-windows\pac_man_c#.AssemblyInfo.cs
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\obj\Debug\net10.0-windows\pac_man_c#.csproj.CoreCompileInputs.cache
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\obj\Debug\net10.0-windows\pac_man_c#.dll
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\obj\Debug\net10.0-windows\refint\pac_man_c#.dll
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\obj\Debug\net10.0-windows\pac_man_c#.pdb
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\obj\Debug\net10.0-windows\pac_man_c#.genruntimeconfig.cache
+C:\Users\mc_gwaibel27\Documents\GitHub\Programming\pac_man_c#\pac_man_c#\obj\Debug\net10.0-windows\ref\pac_man_c#.dll

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "pac_man_c#/1.0.0": {
+        "runtime": {
+          "pac_man_c#.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "pac_man_c#/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
