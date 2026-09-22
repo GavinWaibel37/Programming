@@ -1,0 +1,265 @@
+﻿namespace pac_man_c_
+{
+    public partial class Form1 : Form
+    {
+        // Single cached sprites (create from one source asset and transform)
+        private Bitmap pacmanRightBmp;
+        private Bitmap pacmanLeftBmp;
+        private Bitmap pacmanUpBmp;
+        private Bitmap pacmanDownBmp;
+        // Animated GIF (if present in resources
+
+        // Which way Pac-Man is moving right now
+        bool goUp, goDown, goLeft, goRight;
+
+        // True when a wall is blocking Pac-Man in that direction
+        bool noUp, noDown, noLeft, noRight;
+
+        // Lists that will hold every wall and every coin on the form
+        List<PictureBox> walls = new List<PictureBox>();
+        List<PictureBox> coins = new List<PictureBox>();
+
+        int speed = 12;   // how many pixels Pac-Man moves each timer tick
+        int score = 0;    // how many coins Pac-Man has collected
+
+        // The four ghosts. They get created in the SetUp method (Part 20).
+       // Ghost red, yellow, blue, pink;
+
+        // A list of all the ghosts, so we can loop through them
+      //  List<Ghost> ghosts = new List<Ghost>();
+
+        public Form1()
+        {
+            InitializeComponent();
+            SetUp();
+            CreatePacmanSprites();
+            this.FormClosed += Form1_FormClosed;
+        }
+
+        private void KeyIsDown(object sender, KeyEventArgs e)
+        {
+            // LEFT arrow, and no wall blocking the left
+            if (e.KeyCode == Keys.Left && noLeft == false)
+            {
+                goRight = goDown = goUp = false;     // stop the other directions
+                noRight = noDown = noUp = false;     // clear the other wall blocks
+                goLeft = true;                       // start moving left
+                // use cached flipped sprite if we are not using an animated GIF
+                if (!isGifAnimated && pacmanLeftBmp != null) pacman.Image = pacmanLeftBmp;
+            }
+
+            // RIGHT arrow
+            if (e.KeyCode == Keys.Right && noRight == false)
+            {
+                goLeft = goUp = goDown = false;
+                noLeft = noUp = noDown = false;
+                goRight = true;
+                if (!isGifAnimated && pacmanRightBmp != null) pacman.Image = pacmanRightBmp;
+            }
+
+            // UP arrow
+            if (e.KeyCode == Keys.Up && noUp == false)
+            {
+                goLeft = goRight = goDown = false;
+                noLeft = noRight = noDown = false;
+                goUp = true;
+                if (!isGifAnimated && pacmanUpBmp != null) pacman.Image = pacmanUpBmp;
+            }
+
+            // DOWN arrow
+            if (e.KeyCode == Keys.Down && noDown == false)
+            {
+                goLeft = goRight = goUp = false;
+                noLeft = noRight = noUp = false;
+                goDown = true;
+                if (!isGifAnimated && pacmanDownBmp != null) pacman.Image = pacmanDownBmp;
+            }
+        }
+
+        // Create flipped/rotated sprites once from a single source sprite
+        private void CreatePacmanSprites()
+        {
+            // Assume the project currently contains a right-facing resource named "right".
+            // We create clones and RotateFlip them to get other directions.
+            try
+            {
+                if (Properties.Resources.right != null)
+                {
+                    pacmanRightBmp = new Bitmap(Properties.Resources.right);
+
+                    pacmanLeftBmp = (Bitmap)pacmanRightBmp.Clone();
+                    pacmanLeftBmp.RotateFlip(RotateFlipType.RotateNoneFlipX);
+
+                    pacmanUpBmp = (Bitmap)pacmanRightBmp.Clone();
+                    pacmanUpBmp.RotateFlip(RotateFlipType.Rotate270FlipNone);
+
+                    pacmanDownBmp = (Bitmap)pacmanRightBmp.Clone();
+                    pacmanDownBmp.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                }
+
+                // Try to find an animated GIF in resources. Common names: "pacman", "pacmanGif", "pacman_gif"
+                try
+                {
+                    object? o = Properties.Resources.ResourceManager.GetObject("pacmanGif")
+                                ?? Properties.Resources.ResourceManager.GetObject("pacman_gif")
+                                ?? Properties.Resources.ResourceManager.GetObject("pacman");
+
+                    if (o is Image img && ImageAnimator.CanAnimate(img))
+                    {
+                        pacmanAnimatedGif = img;
+                        isGifAnimated = true;
+                        // Start animation and repaint on frame changes
+                        ImageAnimator.Animate(pacmanAnimatedGif, new EventHandler(OnFrameChanged));
+                        // Use custom painting so we can flip the image for directions
+                        pacman.Paint += Pacman_Paint;
+                        // Clear any static image so painting is used
+                        pacman.Image = null;
+                    }
+                }
+                catch
+                {
+                    // ignore resource lookup failures
+                }
+            }
+            catch
+            {
+                // If resources are missing or creation fails, fall back to existing resources.
+                // Do nothing here; KeyIsDown checks for null and original resources still exist.
+            }
+        }
+
+        private void OnFrameChanged(object? o, EventArgs e)
+        {
+            // Request repaint of the pacman PictureBox so the new frame is drawn
+            pacman?.Invalidate();
+        }
+
+        private void Pacman_Paint(object? sender, PaintEventArgs e)
+        {
+            if (!isGifAnimated || pacmanAnimatedGif == null) return;
+
+            // Update to the current frame
+            ImageAnimator.UpdateFrames(pacmanAnimatedGif);
+
+            Graphics g = e.Graphics;
+            Rectangle dest = new Rectangle(0, 0, pacman.Width, pacman.Height);
+
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+
+            // Draw based on direction, applying transforms for flipped/rotated cases
+            if (goLeft)
+            {
+                // Flip horizontally
+                g.TranslateTransform(dest.Width, 0);
+                g.ScaleTransform(-1, 1);
+                g.DrawImage(pacmanAnimatedGif, new Rectangle(0, 0, dest.Width, dest.Height));
+                g.ResetTransform();
+            }
+            else if (goRight)
+            {
+                g.DrawImage(pacmanAnimatedGif, dest);
+            }
+            else if (goUp)
+            {
+                // Rotate -90 degrees around center
+                g.TranslateTransform(dest.Width / 2f, dest.Height / 2f);
+                g.RotateTransform(-90);
+                g.TranslateTransform(-dest.Height / 2f, -dest.Width / 2f);
+                g.DrawImage(pacmanAnimatedGif, new Rectangle(0, 0, dest.Height, dest.Width));
+                g.ResetTransform();
+            }
+            else if (goDown)
+            {
+                // Rotate 90 degrees around center
+                g.TranslateTransform(dest.Width / 2f, dest.Height / 2f);
+                g.RotateTransform(90);
+                g.TranslateTransform(-dest.Height / 2f, -dest.Width / 2f);
+                g.DrawImage(pacmanAnimatedGif, new Rectangle(0, 0, dest.Height, dest.Width));
+                g.ResetTransform();
+            }
+            else
+            {
+                // Default: draw facing right
+                g.DrawImage(pacmanAnimatedGif, dest);
+            }
+        }
+
+        private void Form1_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            pacmanRightBmp?.Dispose();
+            pacmanLeftBmp?.Dispose();
+            pacmanUpBmp?.Dispose();
+            pacmanDownBmp?.Dispose();
+            if (isGifAnimated && pacmanAnimatedGif != null)
+            {
+                try { ImageAnimator.StopAnimate(pacmanAnimatedGif, new EventHandler(OnFrameChanged)); } catch { }
+            }
+        }
+
+        private void GameTimerEvent(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StartButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        // Collects the walls and coins into lists and creates the ghosts
+        private void SetUp()
+        {
+            // Look at every control on the form, one at a time
+            foreach (Control x in this.Controls)
+            {
+                // If it is a picture box tagged "wall", add it to the walls list
+                if (x is PictureBox && (string)x.Tag == "wall")
+                {
+                    walls.Add((PictureBox)x);
+                }
+
+                // If it is a picture box tagged "coin", add it to the coins list
+                if (x is PictureBox && (string)x.Tag == "coin")
+                {
+                    coins.Add((PictureBox)x);
+                }
+            }
+        }
+
+        // Moves Pac-Man in the direction he is going
+        private void PlayerMovements()
+        {
+
+        }
+
+        // Makes all the coins visible again
+        private void ShowCoins()
+        {
+
+        }
+
+        // Stops Pac-Man if he runs into a wall
+        private void CheckBoundaries(PictureBox pacman, PictureBox wall)
+        {
+
+        }
+
+        // Collects a coin if Pac-Man touches it
+        private void CollectingCoins(PictureBox pacman, PictureBox coin)
+        {
+
+        }
+
+        // Ends the game if a ghost touches Pac-Man
+      //  private void GhostCollision(Ghost g, PictureBox pacman, PictureBox ghost)
+      //  {
+
+       // }
+
+        // Stops the game and shows the menu with a message
+        private void GameOver(string message)
+        {
+
+        }
+    }
+}

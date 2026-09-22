@@ -1,0 +1,135 @@
+﻿namespace pac_man_c_
+{
+    public partial class Form1 : Form
+    {
+        // Which way Pac-Man is moving right now
+        bool goUp, goDown, goLeft, goRight;
+
+        // True when a wall is blocking Pac-Man in that direction
+        bool noUp, noDown, noLeft, noRight;
+
+        // Lists that will hold every wall and every coin on the form
+        List<PictureBox> walls = new List<PictureBox>();
+        List<PictureBox> coins = new List<PictureBox>();
+
+        int speed = 12;   // how many pixels Pac-Man moves each timer tick
+        int score = 0;    // how many coins Pac-Man has collected
+
+        // The four ghosts. They get created in the SetUp method (Part 20).
+       // Ghost red, yellow, blue, pink;
+
+        // A list of all the ghosts, so we can loop through them
+      //  List<Ghost> ghosts = new List<Ghost>();
+
+        public Form1()
+        {
+            InitializeComponent();
+            SetUp();
+        }
+
+        private void KeyIsDown(object sender, KeyEventArgs e)
+        {
+            // LEFT arrow, and no wall blocking the left
+            if (e.KeyCode == Keys.Left && noLeft == false)
+            {
+                goRight = goDown = goUp = false;     // stop the other directions
+                noRight = noDown = noUp = false;     // clear the other wall blocks
+                goLeft = true;                       // start moving left
+                pacman.Image = Properties.Resources.left;   // face left
+            }
+
+            // RIGHT arrow
+            if (e.KeyCode == Keys.Right && noRight == false)
+            {
+                goLeft = goUp = goDown = false;
+                noLeft = noUp = noDown = false;
+                goRight = true;
+                pacman.Image = Properties.Resources.right;
+            }
+
+            // UP arrow
+            if (e.KeyCode == Keys.Up && noUp == false)
+            {
+                goLeft = goRight = goDown = false;
+                noLeft = noRight = noDown = false;
+                goUp = true;
+                pacman.Image = Properties.Resources.up;
+            }
+
+            // DOWN arrow
+            if (e.KeyCode == Keys.Down && noDown == false)
+            {
+                goLeft = goRight = goUp = false;
+                noLeft = noRight = noUp = false;
+                goDown = true;
+                pacman.Image = Properties.Resources.down;
+            }
+        }
+
+        private void GameTimerEvent(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StartButtonClick(object sender, EventArgs e)
+        {
+
+        }
+
+        // Collects the walls and coins into lists and creates the ghosts
+        private void SetUp()
+        {
+            // Look at every control on the form, one at a time
+            foreach (Control x in this.Controls)
+            {
+                // If it is a picture box tagged "wall", add it to the walls list
+                if (x is PictureBox && (string)x.Tag == "wall")
+                {
+                    walls.Add((PictureBox)x);
+                }
+
+                // If it is a picture box tagged "coin", add it to the coins list
+                if (x is PictureBox && (string)x.Tag == "coin")
+                {
+                    coins.Add((PictureBox)x);
+                }
+            }
+        }
+
+        // Moves Pac-Man in the direction he is going
+        private void PlayerMovements()
+        {
+
+        }
+
+        // Makes all the coins visible again
+        private void ShowCoins()
+        {
+
+        }
+
+        // Stops Pac-Man if he runs into a wall
+        private void CheckBoundaries(PictureBox pacman, PictureBox wall)
+        {
+
+        }
+
+        // Collects a coin if Pac-Man touches it
+        private void CollectingCoins(PictureBox pacman, PictureBox coin)
+        {
+
+        }
+
+        // Ends the game if a ghost touches Pac-Man
+      //  private void GhostCollision(Ghost g, PictureBox pacman, PictureBox ghost)
+      //  {
+
+       // }
+
+        // Stops the game and shows the menu with a message
+        private void GameOver(string message)
+        {
+
+        }
+    }
+}

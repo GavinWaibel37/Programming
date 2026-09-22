@@ -1,3 +1,6 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Ghost.cs" />
+  </Folder>
   <Project Path="pac_man_c#/pac_man_c#.csproj" />
 </Solution>
