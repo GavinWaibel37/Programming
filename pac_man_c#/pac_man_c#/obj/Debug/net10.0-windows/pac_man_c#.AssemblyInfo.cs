@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("pac_man_c#")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+65344a78c415cdb3deeaa23b6efb13164ebd4d56")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("pac_man_c#")]
 [assembly: System.Reflection.AssemblyTitleAttribute("pac_man_c#")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

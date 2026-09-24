@@ -166,7 +166,7 @@
             gameTimer = new System.Windows.Forms.Timer(components);
             pnlMenu = new Panel();
             lblInfo = new Label();
-            titleBar = new Label();
+            label1 = new Label();
             btnStart = new Button();
             ((System.ComponentModel.ISupportInitialize)Wall1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Wall6).BeginInit();
@@ -1766,7 +1766,7 @@
             // pnlMenu
             // 
             pnlMenu.Controls.Add(lblInfo);
-            pnlMenu.Controls.Add(titleBar);
+            pnlMenu.Controls.Add(label1);
             pnlMenu.Controls.Add(btnStart);
             pnlMenu.Location = new Point(257, 251);
             pnlMenu.Name = "pnlMenu";
@@ -1785,17 +1785,17 @@
             lblInfo.TabIndex = 2;
             lblInfo.Text = "Use Arrow Keys To Move";
             // 
-            // titleBar
+            // label1
             // 
-            titleBar.BackColor = Color.Transparent;
-            titleBar.Font = new Font("Impact", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            titleBar.ForeColor = Color.Yellow;
-            titleBar.Location = new Point(86, 12);
-            titleBar.Name = "titleBar";
-            titleBar.Size = new Size(378, 80);
-            titleBar.TabIndex = 1;
-            titleBar.Text = "PACMAN";
-            titleBar.TextAlign = ContentAlignment.MiddleCenter;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Impact", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.Yellow;
+            label1.Location = new Point(86, 12);
+            label1.Name = "label1";
+            label1.Size = new Size(378, 80);
+            label1.TabIndex = 1;
+            label1.Text = "PACMAN";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnStart
             // 
@@ -2227,7 +2227,7 @@
         private System.Windows.Forms.Timer gameTimer;
         private Panel pnlMenu;
         private Button btnStart;
-        private Label titleBar;
+        private Label label1;
         private Label lblInfo;
     }
 }
